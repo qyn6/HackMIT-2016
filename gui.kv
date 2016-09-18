@@ -1,0 +1,111 @@
+
+<Button>:
+	background_color: (0,0,0,1)
+	font_size: 15
+
+
+<Widget>:
+    font_name: 'Exo2-Bold.otf'
+
+<GrandParent>:
+	cols:1
+	GridLayout:
+		rows:1
+		size_hint_y:.06
+		canvas:
+			Rectangle:
+				source: 'instrument.png'
+				size: self.size
+				pos:self.pos
+	GridLayout:
+		cols:1
+		size_hint_y:.02
+		GridLayout:
+			id: grid
+			rows:1
+			size_hint_y:.02
+			# GridLayout:
+			# 	cols:1
+			# 	id: instrument
+
+			__safe_id: [dropdown.__self__]
+			__safe_id2: [dropdown2.__self__]
+		    Button:
+		        id: btn
+		        text: 'Select Instrument'
+		        on_release: dropdown.open(self)
+		        # size_hint_y: None
+		        # height: '48dp'
+
+			DropDown:
+		        id: dropdown
+		        on_parent: self.dismiss()
+		        on_select: btn.text = 'Selected instrument: {}'.format(args[1])
+
+		        Button:
+		            text: "World's Smallest Violin"
+		            size_hint_y: None
+		            # height: '48dp'
+		            on_release: dropdown.select("World's Smallest Violin")
+
+		        Button:
+		            text: 'Piano'
+		            size_hint_y: None
+		            # height: '48dp'
+		            on_release: dropdown.select('Piano')
+
+		        Button:
+		            text: 'Clarinet'
+		            size_hint_y: None
+		            # height: '48dp'
+		            on_release: dropdown.select('Clarinet')
+
+		    Button:
+		        id: btn2
+		        text: 'Select Song'
+		        on_release: dropdown2.open(self)
+		        # size_hint_y: None
+		        # height: '48dp'
+
+			DropDown:
+		        id: dropdown2
+		        on_parent: self.dismiss()
+		        on_select: btn2.text = 'Selected Song: {}'.format(args[1])
+
+		        Button:
+		            text: 'Ode To Joy'
+		            size_hint_y: None
+		            #height: '48dp'
+		            on_release: 
+		            	dropdown2.select('Ode To Joy')
+		            	root.song = 'Ode To Joy'
+
+		        Button:
+		            text: 'Mary Had a Little Lamb'
+		            size_hint_y: None
+		            # height: '48dp'
+		            on_release:  
+		            	dropdown2.select('Mary Had a Little Lamb')
+		            	root.song = 'Mary Had a Little Lamb'
+
+		GridLayout:
+			id: grid
+			rows:1
+			size_hint_y:.02
+			Button:
+		        id: btn3
+		        text: 'Start'
+		        on_release: root.start()
+	
+
+
+
+
+		# Button:
+		# 	id: restart
+		# 	text: "Restart"
+		# 	# background_normal:'./images/freedraw.png'
+		# 	# background_down: './images/freedrawpressed.png'
+		# 	on_release:root.restart()
+
+
